@@ -37,8 +37,15 @@
       <file leaf-file-name="exportThreadAppraisal.js" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/exportThreadAppraisal.js">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
             <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
               <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+=======
+
+            <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+              <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
               <folding />
             </state>
           </provider>
@@ -116,8 +123,15 @@
         <option value="$PROJECT_DIR$/exportThread.js" />
         <option value="$PROJECT_DIR$/importThread.js" />
         <option value="$PROJECT_DIR$/exportThreadAppraisal.js" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/dummyTestReportingB.html" />
         <option value="$PROJECT_DIR$/dummyTest.js" />
+=======
+
+        <option value="$PROJECT_DIR$/dummyTestReportingB.html" />
+        <option value="$PROJECT_DIR$/dummyTest.js" />
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
       </list>
     </option>
   </component>
@@ -355,7 +369,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/exportThreadAppraisal.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+=======
+
+        <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
@@ -393,6 +413,10 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
     <entry file="file://$PROJECT_DIR$/getThreadStats.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="119">
@@ -443,6 +467,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/getThreadAppraisal.js">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
@@ -476,11 +504,19 @@
     <entry file="file://$PROJECT_DIR$/exportThreadAppraisal.js">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="697">
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
           <caret line="10" column="54" selection-start-line="10" selection-start-column="54" selection-end-line="10" selection-end-column="54" />
           <folding />
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
     <entry file="file://$PROJECT_DIR$/dummyTestReportingB.html">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-9.153846" vertical-offset="0" max-vertical-offset="391">
@@ -501,6 +537,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0" vertical-offset="0" max-vertical-offset="579">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+<<<<<<< HEAD
+=======
+
+>>>>>>> bd2cc43ab9d3853253ed60e2b1ad8205e92c3a98
           <folding />
         </state>
       </provider>
