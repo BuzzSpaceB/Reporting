@@ -32,11 +32,6 @@ function testImportThreadAppraisal()
 }
 
 
->>>>>>> origin/master
-function testExportThread()
-{
-
-}
 
 function testImportThread()
 {
