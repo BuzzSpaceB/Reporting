@@ -27,8 +27,12 @@ function testExportThreadAppraisal()
 
 function testImportThreadAppraisal()
 {
+
 	importThreadAppraisal("Yes.csv");
 }
+
+
+>>>>>>> origin/master
 function testExportThread()
 {
 
