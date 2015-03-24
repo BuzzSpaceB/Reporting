@@ -102,8 +102,7 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
  * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
  * @returns  The sum of all appraisal values for the entries in the data set that was created.
  */
-var sum;
-sum = new function (dataSet) {
+function sum(dataSet) {
 
     var sum = 0; /**Variable that stores the sum value.*/
 
@@ -121,8 +120,7 @@ sum = new function (dataSet) {
  * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
  * @returns  The average of all appraisal values for the entries in the data set that was created.
  */
-var average;
-average = new function (dataSet) {
+function average(dataSet) {
 
     var sum = 0; /**Variable that stores the sum value.*/
     var number = dataSet.length(); /**Variable that stores the size of the dataset.*/
@@ -141,8 +139,7 @@ average = new function (dataSet) {
  *  @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
  *  @returns  The maximum of all appraisal values for the entries in the data set that was created.
  */
-var maximum;
-maximum = new function (dataSet) {
+function maximum(dataSet) {
 
     var max = 0; /**Variable that stores the maximum value.*/
 
@@ -163,8 +160,7 @@ maximum = new function (dataSet) {
  * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
  * @returns  The minimum of all non-empty appraisal values for the entries in the data set that was created.
  */
-var minimum;
-minimum = new function(dataSet){
+function minimum(dataSet){
 
     var min = 0; /**Variable that stores the minimum value.*/
 
@@ -185,8 +181,7 @@ minimum = new function(dataSet){
  * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
  * @returns A count of all non-empty appraisal values for the entries in the data set that was created.
  */
-var nonEmpty;
-nonEmpty = new function(dataSet){
+function nonEmpty(dataSet){
 
     var count = 0; /**Variable that stores the number of element that are not empty.*/
 
