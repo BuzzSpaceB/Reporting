@@ -1,7 +1,7 @@
 /**Edited by Mkhabela Phethile 3/19/2015**/
 /**the importThreadAppraisal Function gets a csv file as input from the exportThreadAppraisal function, the function then checks that the member and the appraisal are valid, calls assignAppraisalToPost for each field if valid and throws an exception if invalid**/
 /**This function requires you to run in on a server like Apache, I used usbwebserver**/
-module.exports = function(filename)//function gets the name of the file as input same file from exportThreadAppraisal(),this is how i achieved the functionality <a href="#" onclick="importThreadAppraisal('yes.csv')">test</a>
+module.exports = function(directory,fileName)//function gets the name of the file as input same file from exportThreadAppraisal(),this is how i achieved the functionality <a href="#" onclick="importThreadAppraisal('yes.csv')">test</a>
 {
     var dataRead;
     var fs = require('fs');
@@ -10,13 +10,14 @@ module.exports = function(filename)//function gets the name of the file as input
     fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
         if (!err){
             dataRead = data;
+            parseData(dataRead);
         }else{
             console.log(err);
         }
     });
 
-parseData(dataRead);
-}
+
+};
 /**parse csv**/ 
 function parseData(data)
 {
@@ -63,17 +64,31 @@ function isValid(appraisalValue)
 {
 try {
   /**I was not sure what  the highest appraisal value could be so i decided on 10, you may alter this if you wish**/
-	if(appraisalValue == "") throw "empty"; else return true;
+    if ((appraisalValue !=="")&&(appraisalValue>0)&&(appraisalValue<10))
+    {
+
+        return true;
+    }
+    else
+    {
+
+        return false;
+    }
+	/*if(appraisalValue == "") throw "empty"; else return true;
         if(isNaN(appraisalValue)) throw "not a number"; else return true;
         if(appraisalValue < 1) throw "too low"; else return true;
-        if(appraisalValue > 10) throw "too high"; else return true;
+        if(appraisalValue > 10) throw "too high"; else return true;*/
    }
 catch(err) {
       message.innerHTML = "Appraisal Value is " + err;
-}
+    }
 }
 
-assignAppraisalToPost(postValue) //Dummy Function
+/** This function is a dummy one since we dont implement it.*/
+function isAuthorised(someData)
+{return true;}
+
+function assignAppraisalToPost(postValue) //Dummy Function
 {
 console.log("Appraisal post value " + postValue);
 }
