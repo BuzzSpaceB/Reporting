@@ -24,9 +24,9 @@ function exportThreadAppraisal( threadObject,filename)
 
         strCSV += line + '\r\n';
     }
-
-    /** Save to CSV file */
-    var downloadLink = document.createElement("a");
+    return strCSV;
+    /** Save to CSV file - Doesn't work in node */
+   /* var downloadLink = document.createElement("a");
     var blob = new Blob(["\ufeff", strCSV]);
     var url = URL.createObjectURL(blob);
     downloadLink.href = url;
@@ -34,5 +34,15 @@ function exportThreadAppraisal( threadObject,filename)
 
     document.body.appendChild(downloadLink);
     downloadLink.click();
-    document.body.removeChild(downloadLink);
+    document.body.removeChild(downloadLink);*/
 }
+
+module.exports = function(threadObject,directory,fileName){
+    var fs = require('fs');
+    var path = require('path');
+    var filePath = path.join(directory,fileName);
+    var parseToCsv = exportThreadAppraisal(threadObject);
+    fs.writeFile(filePath, parseToCsv, function (err) {
+        if (err) return console.log(err);
+    });
+};
