@@ -4,6 +4,17 @@
  * @return the JSON string containing the thread or subset of a thread that was backed up
  * */
 
-    module.exports = function(fileName){
-    console.log(filename);
-}
+    module.exports = function(directory,fileName,callback){
+    console.log("Stating");
+        var fs = require('fs');
+        var path = require('path');
+        var filePath = path.join(directory,fileName);
+        fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+            if (!err){
+                callback(data);
+            }else{
+                console.log(err);
+            }
+
+        });
+    }
