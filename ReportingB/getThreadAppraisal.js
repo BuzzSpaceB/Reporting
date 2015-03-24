@@ -3,7 +3,8 @@
  */
 
 /**getThreadAppraisal
- * Receives parameters which are 3 json object and 1 actionKeyword. Depending on the actionKeyword perfoms certain calculations and return results
+ * Receives parameters which are 3 json object and 1 actionKeyword. Depending on the actionKeyword performs
+ * certain calculations and return results
  *
  * @param  setOfPosts -     Type JSONObject a set of posts returned by the Threads.queryThread function.
  * @param  setOfMembers -   Type JSONObject a set of members returned by the Threads.queryThread function.
@@ -69,23 +70,23 @@ getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, ac
             break;
 
         case "Sum":
-                return sum(dataSet);
+                return sum(dataSet); //Calls the helper function sum(dataset)
             break;
 
         case "Avg":
-                return average(dataSet);
+                return average(dataSet);//Calls the helper function average(dataset)
             break;
 
         case "Max":
-                return maximum(dataSet);
+                return maximum(dataSet);//Calls the helper function maximum(dataset)
             break;
 
         case "Min":
-                return minimum(dataSet);
+                return minimum(dataSet);//Calls the helper function minimum(dataset)
             break;
 
         case "Num":
-                return nonEmpty(dataSet);
+                return nonEmpty(dataSet);//Calls the helper function nonEmpty(dataset)
             break;
 
         default:
@@ -95,88 +96,105 @@ getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, ac
 
 /**
  * Helper Function For Case: "Sum"
- *The sum of all appraisal values for the entries in the dataset that was created.
+ * The sum of all appraisal values for the entries in the data set that was created.
+ *
+ * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
+ * @returns  The sum of all appraisal values for the entries in the data set that was created.
  */
-var sum = new function(dataSet)
-{
-    var sum = 0;
+var sum;
+sum = new function (dataSet) {
 
-    for(var i = 0; i < dataSet.length(); i++)
-    {
-        sum += dataSet[i].appraisalValue;
+    var sum = 0; /**Variable that stores the sum value.*/
+
+    for (var i = 0; i < dataSet.length(); i++) { /**For loop iteration through the dataset from the beginning to the end*/
+        sum += dataSet[i].appraisalValue; /**Add the current dataset element appraisal value to variable sum*/
     }
 
-    return sum;
+    return sum; /**Return the sum which is stored in the variable sum*/
 };
 
 /**
  *  Helper Function For Case: "Avg"
- *  The average of all appraisal values for the entries in the dataset that was created.
+ *  The average of all appraisal values for the entries in the data set that was created.
+ *
+ * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
+ * @returns  The average of all appraisal values for the entries in the data set that was created.
  */
 var average;
 average = new function (dataSet) {
-    var sum = 0;
-    var number = dataSet.length();
 
-    for (var i = 0; i < number; i++) {
-        sum += dataSet[i].appraisalValue;
+    var sum = 0; /**Variable that stores the sum value.*/
+    var number = dataSet.length(); /**Variable that stores the size of the dataset.*/
+
+    for (var i = 0; i < number; i++) { /**For loop iteration through the dataset from the beginning to the end*/
+        sum += dataSet[i].appraisalValue; /**Add the current dataset element appraisal value to variable sum*/
     }
 
-    return sum / number;
+    return sum / number; /**Return the average which is the sum divided by the number*/
 };
 
 /**
  *  Helper Function For Case: "Max"
- *  The maximum of all appraisal values for the entries in the dataset that was created.
+ *  The maximum of all appraisal values for the entries in the data set that was created.
+ *
+ *  @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
+ *  @returns  The maximum of all appraisal values for the entries in the data set that was created.
  */
 var maximum;
 maximum = new function (dataSet) {
 
-    var max = 0;
+    var max = 0; /**Variable that stores the maximum value.*/
 
-    for (var i = 0; i < dataSet.length(); i++) {
+    for (var i = 0; i < dataSet.length(); i++) {/**For loop iteration through the dataset from the beginning to the end*/
 
-        if (dataSet[i].appraisalValue > max) {
-            max = dataSet[i].appraisalValue;
+        if (dataSet[i].appraisalValue > max) {  /**If the current element is less than the value saved in max then enter if*/
+            max = dataSet[i].appraisalValue; /**Assign the current dataset element appraisal value to variable max*/
         }
     }
 
-    return max;
+    return max; /**Return the variable min*/
 };
 
 /**
  * Helper Function For Case: "Min"
  * The minimum of all non-empty appraisal values for the entries in the dataset that was created.
+ *
+ * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
+ * @returns  The minimum of all non-empty appraisal values for the entries in the data set that was created.
  */
 var minimum;
 minimum = new function(dataSet){
 
-    var min = 0;
+    var min = 0; /**Variable that stores the minimum value.*/
 
-    for (var i = 0; i < dataSet.length(); i++) {
+    for (var i = 0; i < dataSet.length(); i++) {/**For loop iteration through the dataset from the beginning to the end*/
 
-        if (dataSet[i].appraisalValue < min) {
-            min = dataSet[i].appraisalValue;
+        if (dataSet[i].appraisalValue < min) { /**If the current element is less than the value saved in min then enter if*/
+            min = dataSet[i].appraisalValue;  /**Assign the current dataset element appraisal value to variable min*/
         }
     }
 
-    return min;
+    return min; /**Return the variable min*/
 };
 
 /**
  * Helper Function For Case: "Num"
- * A count of all non-empty appraisal values for the entries in the dataset that was created.
+ * A count of all non-empty appraisal values for the entries in the data set that was created.
+ *
+ * @param  dataSet - Array containing objects created using the  member-appraisal-post combination.
+ * @returns A count of all non-empty appraisal values for the entries in the data set that was created.
  */
 var nonEmpty;
 nonEmpty = new function(dataSet){
 
-    var count = 0;
+    var count = 0; /**Variable that stores the number of element that are not empty.*/
 
-    for(var i = 0; i < dataSet.length(); i++)
+    for(var i = 0; i < dataSet.length(); i++) /**For loop iteration through the dataset from the beginning to the end*/
     {
-        if(dataSet[i].appraisalValue != 0)
-            count += 1;
+        if(dataSet[i].appraisalValue != 0) {/**If the current element is not null then enter if statement*/
+            count += 1; /**Increment the count*/
+        }
     }
 
-    return count;
+    return count; /**Return the variable count*/
 };
