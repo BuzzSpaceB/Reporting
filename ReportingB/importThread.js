@@ -5,7 +5,6 @@
  * */
 
     module.exports = function(directory,fileName,callback){
-    console.log("Stating");
         var fs = require('fs');
         var path = require('path');
         var filePath = path.join(directory,fileName);

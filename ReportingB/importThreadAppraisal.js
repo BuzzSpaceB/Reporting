@@ -1,24 +1,21 @@
 /**Edited by Mkhabela Phethile 3/19/2015**/
 /**the importThreadAppraisal Function gets a csv file as input from the exportThreadAppraisal function, the function then checks that the member and the appraisal are valid, calls assignAppraisalToPost for each field if valid and throws an exception if invalid**/
 /**This function requires you to run in on a server like Apache, I used usbwebserver**/
-function importThreadAppraisal(filename)//function gets the name of the file as input same file from exportThreadAppraisal(),this is how i achieved the functionality <a href="#" onclick="importThreadAppraisal('yes.csv')">test</a>
+module.exports = function(filename)//function gets the name of the file as input same file from exportThreadAppraisal(),this is how i achieved the functionality <a href="#" onclick="importThreadAppraisal('yes.csv')">test</a>
 {
-   /**variable used for request purposes**/
-  var req;
-    if (window.XMLHttpRequest) {
-        /**supported by the following browsers: IE7+, Firefox, Chrome, Opera, Safari**/
-        req = new XMLHttpRequest();
-    } else {
-        /**for IE6, IE5**/
-        req = new ActiveXObject('Microsoft.XMLHTTP');
-    }
-    /**this part loads the file, using GET**/
-    req.open('GET',filename,false);
-    req.send();
-    /**storing the request's response text to the data variable**/
-    var data = req.responseText;
+    var dataRead;
+    var fs = require('fs');
+    var path = require('path');
+    var filePath = path.join(directory,fileName);
+    fs.readFile(filePath, {encoding: 'utf-8'}, function(err,data){
+        if (!err){
+            dataRead = data;
+        }else{
+            console.log(err);
+        }
+    });
 
-parseData(data);
+parseData(dataRead);
 }
 /**parse csv**/ 
 function parseData(data)
@@ -74,6 +71,11 @@ try {
 catch(err) {
       message.innerHTML = "Appraisal Value is " + err;
 }
+}
+
+assignAppraisalToPost(postValue) //Dummy Function
+{
+console.log("Appraisal post value " + postValue);
 }
 
 
