@@ -12,5 +12,5 @@ module.exports = function(threadObject,directory,fileName){
     fs.writeFile(filePath, threadObject, function (err) {
         if (err) return console.log(err);
     });
-}
+};
 

@@ -15,7 +15,7 @@
  * */
 var getThreadAppraisal;
 
-getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, actionKeyword ) {
+getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, actionKeyword, callback) {
 
     var localSetOfPosts = JSON.parse(setOfPosts); //local copy of the set of posts
     var localSetOfMembers = JSON.parse(setOfMembers); //local copy of the set of members
@@ -66,27 +66,27 @@ getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, ac
      */
     switch(localActionKeyword) {
         case "All":
-                return dataSet.toJSON();
+            callback(dataSet.toJSON());
             break;
 
         case "Sum":
-                return sum(dataSet); //Calls the helper function sum(dataset)
+            callback(sum(dataSet)); //Calls the helper function sum(dataset)
             break;
 
         case "Avg":
-                return average(dataSet);//Calls the helper function average(dataset)
+            callback(average(dataSet));//Calls the helper function average(dataset)
             break;
 
         case "Max":
-                return maximum(dataSet);//Calls the helper function maximum(dataset)
+            callback(maximum(dataSet));//Calls the helper function maximum(dataset)
             break;
 
         case "Min":
-                return minimum(dataSet);//Calls the helper function minimum(dataset)
+            callback(minimum(dataSet));//Calls the helper function minimum(dataset)
             break;
 
         case "Num":
-                return nonEmpty(dataSet);//Calls the helper function nonEmpty(dataset)
+            callback(nonEmpty(dataSet));//Calls the helper function nonEmpty(dataset)
             break;
 
         default:

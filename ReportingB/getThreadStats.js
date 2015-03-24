@@ -14,7 +14,7 @@
  * @returns {integer or double value corresponding to the action input}
  */
 
-module.exports = function(posts, action,callback)
+module.exports = function(posts, action, callback)
 {
 
     var array = []; // 1D array to store all the details of the JSON object
