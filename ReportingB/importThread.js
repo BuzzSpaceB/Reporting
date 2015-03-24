@@ -1,7 +1,9 @@
 /** Function to import a thread or subset of threads that was previously backed up
  *
- * @param fileName full file URI
- * @return the JSON string containing the thread or subset of a thread that was backed up
+ * @param directory the directory to be imported from
+ * @param fileName name of file to be imported
+ * @param callback function to be called on result
+ *
  * */
 
     module.exports = function(directory,fileName,callback){

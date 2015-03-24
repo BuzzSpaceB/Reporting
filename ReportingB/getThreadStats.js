@@ -11,6 +11,7 @@
  * Threads.queryThread function is analysed according to the specfied "action" keyword.
  * @param posts a set of posts returned by the Threads.queryThread function
  * @param action action keyword
+ * @param callback function to be called on result
  * @returns {integer or double value corresponding to the action input}
  */
 
