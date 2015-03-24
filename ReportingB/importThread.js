@@ -5,5 +5,5 @@
  * */
 
     module.exports = function(fileName){
-    console.log("export function");
+    console.log(filename);
 }
