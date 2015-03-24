@@ -1,8 +1,10 @@
 
 /** Function to import a thread or subset of threads that was previously backed up
  *
- * @param threadObject the JSON string containing the information on the thread to be backed up
- * @param filename the name that the backup file is to be given (does not include type)
+ * @param threadObject the thread object to be exported
+ * @param directory the directory to be imported from
+ * @param fileName name of file to be imported
+ *
  * */
 
 module.exports = function(threadObject,directory,fileName){
