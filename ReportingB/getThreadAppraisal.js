@@ -15,7 +15,7 @@
  * */
 var getThreadAppraisal;
 
-getThreadAppraisal = new function (setOfPosts, setOfMembers, setOfAppraisals, actionKeyword, callback) {
+module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeyword, callback) {
 
     var localSetOfPosts = JSON.parse(setOfPosts); //local copy of the set of posts
     var localSetOfMembers = JSON.parse(setOfMembers); //local copy of the set of members
