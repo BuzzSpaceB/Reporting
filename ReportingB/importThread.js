@@ -13,7 +13,7 @@
             if (!err){
                 callback(data);
             }else{
-                console.log(err);
+                callback(err);
             }
 
         });
