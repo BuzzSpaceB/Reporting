@@ -15,7 +15,7 @@ var consolePrintCallback = function(data) {
 //var getThreadStats = require('./ReportingB/getThreadStats.js');
 //var getThreadAppraisal = require('./ReportingB/getThreadAppraisal.js');
 var exportThreadAppraisal = require('./ReportingB/exportThreadAppraisal.js');
-//var importThreadAppraisal = require('./ReportingB/importThreadAppraisal.js');
+var importThreadAppraisal = require('./ReportingB/importThreadAppraisal.js');
 var exportThread = require('./ReportingB/exportThread.js');
 var importThread = require('./ReportingB/importThread.js');
 
@@ -30,4 +30,7 @@ exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Con
     /** Convert object to JSON*/
     var jsonObject = JSON.stringify(items);
 exportThreadAppraisal(jsonObject,"C:/Games","yes.csv");
+
+
+importThreadAppraisal("c:/Games","yes.csv");
 console.log("test");
