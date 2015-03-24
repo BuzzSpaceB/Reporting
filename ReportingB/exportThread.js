@@ -5,18 +5,12 @@
  * @param filename the name that the backup file is to be given (does not include type)
  * */
 
-function exportThread(threadObject,filename){
-    var el = document.createElement('a');
-    el.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(threadObject));
-    el.setAttribute('download', filename + ".txt");
-
-    if (document.createEvent) {
-        var event = document.createEvent('MouseEvents');
-        event.initEvent('click', true, true);
-        el.dispatchEvent(event);
-    }
-    else {
-        el.click();
-    }
+module.exports = function(threadObject,directory,fileName){
+    var fs = require('fs');
+    var path = require('path');
+    var filePath = path.join(directory,fileName);
+    fs.writeFile(filePath, threadObject, function (err) {
+        if (err) return console.log(err);
+    });
 }
 
