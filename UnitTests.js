@@ -4,4 +4,3 @@
 
 var Reporting = require('./Reporting.js');
 
-function
