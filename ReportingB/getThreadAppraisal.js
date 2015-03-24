@@ -62,6 +62,7 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
     }
 
     /**
+     * 
      * Switch statement result returned upon each of the action keywords: ALL, SUM, AVG, MAX, MIN and NUM
      */
     switch(localActionKeyword) {
@@ -195,6 +196,7 @@ nonEmpty = new function(dataSet){
             count += 1; /**Increment the count*/
         }
     }
+
 
     return count; /**Return the variable count*/
 };
