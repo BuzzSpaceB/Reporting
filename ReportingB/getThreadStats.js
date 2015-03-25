@@ -11,10 +11,12 @@
  * Threads.queryThread function is analysed according to the specfied "action" keyword.
  * @param posts a set of posts returned by the Threads.queryThread function
  * @param action action keyword
+ * @param callback function to be called on result
  * @returns {integer or double value corresponding to the action input}
  */
 
-function getThreadStats(posts, action){
+module.exports = function(posts, action, callback)
+{
 
     var array = []; // 1D array to store all the details of the JSON object
     var arrayParentID = []; // 1D array to store the parent IDs
@@ -35,7 +37,8 @@ function getThreadStats(posts, action){
 
     if (action === "Num"){
 
-        return getNum(array);
+        callback(getNum(array));
+        //return getNum(array);
     }
     else if (action === "MemCount"){
 
@@ -48,11 +51,13 @@ function getThreadStats(posts, action){
         }
 
         arrayAuthorIDNoDuplicates = eliminateDuplicates(array);
-        return (arrayAuthorIDNoDuplicates.length);
+        callback(arrayAuthorIDNoDuplicates.length);
+        //return (arrayAuthorIDNoDuplicates.length);
     }
     else if(action == "MaxDepth"){
 
-        return (getMaxDepth(array,arrayParentID));
+        callback(getMaxDepth(array,arrayParentID));
+        //return (getMaxDepth(array,arrayParentID));
 
     }
     else if(action === "AvgDepth"){
@@ -62,10 +67,10 @@ function getThreadStats(posts, action){
 
         n = getNum(array);
         md = getMaxDepth(array,arrayParentID);
-
-        return (md/n);
+        callback(md/n);
+        //return (md/n);
     }
-}
+};
 
 /**
  * Helper function that counts the number of parentIDs so get a value of the number of items in the dataset

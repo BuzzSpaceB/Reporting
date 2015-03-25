@@ -1,0 +1,26 @@
+Major changes made:
+
+1. 	Each function that would normally return a value now has a parameter named "callback".
+	Node.js is purely asynchronous, so if one would return the value it might not yet exists when it is used.
+	Therefore in node when recieving any result from a function, one passes the function that would use the result to the function returning said result.
+	When you would usually say "return x;", you now say "callback(x);".
+	So when the higher level people call your function, they would also provide the callback function to your function.
+	But, we did implement the callbacks already, so you dont need to worry about it.
+
+2.	We linked all our files in the Reporting.js file in the repo.
+
+3.	We created a file for unit testing in the repo, that calls gets all the functions from Reporting.js.
+
+If you want to test your code:
+
+1.	Make a folder locally on your computer
+2.	Paste package.json in the folder
+3.	Open command prompt/terminal in the folder that you created
+4.	enter the command: "npm install"
+5. 	Wait for it to download and install all the modules (takes a while)
+6.	Open the unit testing file
+7.	Make sure that the test[your function here] method calls Reporting.[your function here](). And if it needs to display a return value, 
+	use consolePrintCallback as the callback function (last parameter), to print the result in the console.
+8.	In the section where it says "Uncomment your function here to test it:", uncomment the function that you want to test. All uncommented functions will execute
+9.	In cmd/terminal enter the command "node [your path to repo here]\UnitTests.js"
+10.	Evaluate results

@@ -27,15 +27,20 @@ function testExportThreadAppraisal()
 
 function testImportThreadAppraisal()
 {
-
+	importThreadAppraisal("Yes.csv");
 }
+
+
 
 function testExportThread()
 {
-
+    exportThread('{ "posts" : [' +
+    '{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},' +
+    '{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},' +
+    '{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"backup")
 }
 
 function testImportThread()
 {
-
+    alert(importThread("backup.txt"));
 }
