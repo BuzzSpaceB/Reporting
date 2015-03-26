@@ -150,7 +150,7 @@ function maximum(dataSet) {
         }
     }
 
-    return max; /**Return the variable min*/
+    return max; /**Return the variable max*/
 };
 
 /**
