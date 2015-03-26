@@ -32,15 +32,16 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
      */
     for(var member in localSetOfMembers) {
         for (var appraisal in localSetOfAppraisals) {
-            if(appraisal.appraisalID == member.appraisalID) {
+            if (appraisal.appraisalID != member.appraisalID) {
+            } else {
                 tmpAppraisalObject.appraisalID = appraisal.appraisalID;
                 tmpAppraisalObject.appraisalValue = appraisal.appraisalValue;
             }
         }
 
         for (var post in localSetOfPosts) {
-            if(member.postID == post.postID)
-            {
+            if (member.postID != post.postID) {
+            } else {
                 tmpPostObject.parentID = post.parentID;
                 tmpPostObject.Author = post.Author;
                 tmpPostObject.Timestamp = post.Timestamp;
