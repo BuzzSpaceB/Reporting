@@ -31,6 +31,7 @@ module.exports = function(directory,fileName)
             parseData(dataRead);
         }else{
 		//Incase the is an error, shows the error on the console
+
             console.log(err);
         }
     });
@@ -40,10 +41,10 @@ module.exports = function(directory,fileName)
 
 
 
-
  /** Function to parse the csv data
      *@param data - the variable which contains the csv files contents
      * */ 
+
 function parseData(data)
 {
 
@@ -116,6 +117,7 @@ catch(err) {
  /** This function is a dummy one since we dont implement it.
      *@param someData- which is should be the Member ID
      * */ 
+
 function isAuthorised(someData)
 {return true;}
 
