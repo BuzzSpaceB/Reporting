@@ -72,6 +72,7 @@ function testGetThreadStats(){
     {"ParentID":"3", "Author":"2", "TimeStamp":"2015.03.18", "Content":"I wrote something that caused my post to be made hidden.", "Status":"hidden"}
 	];
 	
+	
 }
 
 function testImportThread(){
@@ -84,18 +85,12 @@ function testImportThreadAppraisal(){
 
 //Uncomment your function here to test it:
 
-<<<<<<< HEAD
+
 //testGetThreadStats();
 //testGetThreadAppraisal();
 
 //testExportThread();
 //testExportThreadAppraisal();
 
-=======
-//testExportThread();
-//testExportThreadAppraisal();
-//testGetThreadAppraisal();
-testGetThreadStats();
->>>>>>> 73fa8945a41f6d86f23759eadebf7cbe13ab5518
 //testImportThread();
 //testImportThreadAppraisal();
