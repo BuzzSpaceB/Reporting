@@ -18,17 +18,28 @@
 module.exports = function(posts, action, callback)
 {
 
-    var array = []; // 1D array to store all the details of the JSON object
+    var JSONtoArray = []; // 1D array to store the number of JSON objects
+	var array = []; // 1D array to store all the details of the JSON object
     var arrayParentID = []; // 1D array to store the parent IDs
     var arrayAuthorID = []; // 1D array to store the author IDs
 
     // Parse the JSON object first
     var parsed = JSON.parse(posts);
+	
+	console.log(parsed[0].ParentID);
 
     // Fill the array to contain the content of the JSON object
-    for(var x in parsed){
-        array.push(parsed[x]);
+    for(var i in parsed){
+        JSONtoArray.push(parsed[i]);
+		array.push(JSONtoArray.ParentID);
+		array.push(JSONtoArray.Author);
+		array.push(JSONtoArray.TimeStamp);
+		array.push(JSONtoArray.Content);
+		array.push(JSONtoArray.Status);	
     }
+	
+	//console.log(array[0]);
+	//console.log(array.length);
 
     // Carry out an action based on the value of the "action" keyword:
     // Num: A count of the entries in the dataset that was created
@@ -39,7 +50,6 @@ module.exports = function(posts, action, callback)
     if (action === "Num"){
 
         callback(getNum(array));
-        //return getNum(array);
     }
     else if (action === "MemCount"){
 
@@ -49,20 +59,20 @@ module.exports = function(posts, action, callback)
         for (var i = 1; i < array.length; i+=5){
             arrayAuthorID.push(array[i]);
         }
+		
+		console.log(arrayAuthorID[0]);	
 
         arrayAuthorIDNoDuplicates = eliminateDuplicates(array);
         callback(arrayAuthorIDNoDuplicates.length);
-        //return (arrayAuthorIDNoDuplicates.length);
     }
     else if(action == "MaxDepth"){
 
         callback(getMaxDepth(array,arrayParentID));
-        //return (getMaxDepth(array,arrayParentID));
 
     }
     else if(action === "AvgDepth"){
 
-        callback(getAveDepth(array, pID, aID));
+        callback(getAveDepth(array, arrayParentID, arrayAuthorID));
     }
 };
 
