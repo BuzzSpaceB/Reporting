@@ -25,15 +25,15 @@ function testExportThreadAppraisal(){
 
 function testGetThreadAppraisal(){
     var setOfPosts = [
-        {"postID": "1", "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Status":"Off", "Content":"Baa"},
-        {"postID": "2", "parentID": "2", "Author": "Dummy2", "Timestamp": "1426872319923", "Status":"ON", "Content":"Baa Baa"},
-        {"postID": "3", "parentID": "9", "Author": "Dummy3", "Timestamp": "1426872319924", "Status":"Off", "Content":"Baa Baa Black"},
-        {"postID": "4", "parentID": "5", "Author": "Dummy4", "Timestamp": "1426872319925", "Status":"ON", "Content":"Baa Baa Black Sheep"},
+        {postID: "1", parentID: "1", Author: "Dummy1", Timestamp: "1426872319922", Status:"Off", Content:"Baa"},
+        {postID: "2", "parentID": "2", "Author": "Dummy2", "Timestamp": "1426872319923", "Status":"ON", "Content":"Baa Baa"},
+        {postID: "3", "parentID": "9", "Author": "Dummy3", "Timestamp": "1426872319924", "Status":"Off", "Content":"Baa Baa Black"},
+        {postID: "4", "parentID": "5", "Author": "Dummy4", "Timestamp": "1426872319925", "Status":"ON", "Content":"Baa Baa Black Sheep"},
         {"postID": "5", "parentID": "90", "Author": "Dummy5", "Timestamp": "1426872319926", "Status":"Off", "Content":"Baa Baa Black Sheep, Have you"},
         {"postID": "6", "parentID": "11", "Author": "Dummy6", "Timestamp": "1426872319927", "Status":"ON", "Content":"Baa Baa Black Sheep, Have you any wool?"}];
 
     var setOfAppraisals = [
-        {"appraisalID": "1", "appraisalValue": "1"},
+        {appraisalID: "1", appraisalValue: "1"},
         {"appraisalID": "2", "appraisalValue": "4"},
         {"appraisalID": "3", "appraisalValue": "6"},
         {"appraisalID": "4", "appraisalValue": "9"},
@@ -41,7 +41,7 @@ function testGetThreadAppraisal(){
         {"appraisalID": "6", "appraisalValue": "0"}];
 
     var setOfMembers = [
-        {"memberID": "1", "appraisalID": "1",postID: "1" },
+        {memberID: "1", appraisalID: "1",postID: "1" },
         {"memberID": "2", "appraisalID": "2",postID: "2" },
         {"memberID": "3", "appraisalID": "3",postID: "3" },
         {"memberID": "4", "appraisalID": "4",postID: "4" },
