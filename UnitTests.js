@@ -9,7 +9,7 @@ var consolePrintCallback = function(data) {
 };
 
 function testExportThread(){
-    Reporting.exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"C:/New folder","backup1.txt");
+    Reporting.exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"C:/Users/Diaman/Desktop/ThreadBackup","backup1.txt");
 
 }
 
@@ -20,7 +20,7 @@ function testExportThreadAppraisal(){
 
     /** Convert object to JSON*/
     var jsonObject = JSON.stringify(items);
-    Reporting.exportThreadAppraisal(jsonObject,"C:/Games","yes.csv");
+    Reporting.exportThreadAppraisal(jsonObject,"C:/Users/Diaman/Desktop/Appraisal","appraisal.csv");
 }
 
 function testGetThreadAppraisal(){
@@ -67,18 +67,20 @@ function testGetThreadStats(){
 }
 
 function testImportThread(){
-    Reporting.importThread("C:/New folder","backup.txt",consolePrintCallback);
+    Reporting.importThread("C:/Users/Diaman/Desktop/ThreadBackup","backup1.txt",consolePrintCallback);
 }
 
 function testImportThreadAppraisal(){
-    Reporting.importThreadAppraisal("c:/Games","yes.csv");
+    Reporting.importThreadAppraisal("C:/Users/Diaman/Desktop/Appraisal","appraisal.csv");
 }
 
 //Uncomment your function here to test it:
 
-testExportThread();
-//testExportThreadAppraisal();
-testGetThreadAppraisal();
 //testGetThreadStats();
+//testGetThreadAppraisal();
+
+//testExportThread();
+//testExportThreadAppraisal();
+
 //testImportThread();
 //testImportThreadAppraisal();
