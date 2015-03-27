@@ -21,36 +21,43 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
     var localSetOfMembers = JSON.parse(setOfMembers); //local copy of the set of members
     var localSetOfAppraisals = JSON.parse(setOfAppraisals); //local copy of the set of appraisals
     var localActionKeyword = actionKeyword; //local copy of the set of action keyword
-
+    //callback(localSetOfPosts);
     var dataSet = []; //Array containing objects created using the  member-appraisal-post combination.
-    var tmpObject = new Object();      //Object used to insert the  member-appraisal-post combination into the data set.
-    var tmpAppraisalObject = new Object(); //Object used to get appraisal value for each member
-    var tmpPostObject = new Object();  //Object used to get post value for each member
+    var tmpObject = {};      //Object used to insert the  member-appraisal-post combination into the data set.
+    var tmpAppraisalObject = {}; //Object used to get appraisal value for each member
+    var tmpPostObject = {};  //Object used to get post value for each member
 
     /**
      * loop to create data set containing entry for each valid member-appraisal-post combination
      */
-    for(var member in localSetOfMembers) {
-        for (var appraisal in localSetOfAppraisals) {
-            if (appraisal.appraisalID != member.appraisalID) {
+
+   // for(var member in localSetOfMembers) {
+        //callback(member.appraisalID);
+       // for (var appraisal in localSetOfAppraisals) {
+    for(var i = 0; i < localSetOfMembers.length; i++)
+    {
+        for(var j = 0; j < localSetOfAppraisals.length; j++)
+        {
+            if (localSetOfAppraisals[j].appraisalID != localSetOfMembers[i].appraisalID) {
             } else {
-                tmpAppraisalObject.appraisalID = appraisal.appraisalID;
-                tmpAppraisalObject.appraisalValue = appraisal.appraisalValue;
+                tmpAppraisalObject.appraisalID = localSetOfAppraisals[j].appraisalID;
+                tmpAppraisalObject.appraisalValue = localSetOfAppraisals[j].appraisalValue;
             }
         }
 
-        for (var post in localSetOfPosts) {
-            if (member.postID != post.postID) {
+        //for (var post in localSetOfPosts) {
+        for(var k = 0; k < localSetOfPosts.length; k++){
+            if (localSetOfMembers[i].postID != localSetOfPosts[k].postID) {
             } else {
-                tmpPostObject.parentID = post.parentID;
-                tmpPostObject.Author = post.Author;
-                tmpPostObject.Timestamp = post.Timestamp;
-                tmpPostObject.Status = post.Status;
-                tmpPostObject.Content = post.Content;
+                tmpPostObject.parentID = localSetOfPosts[k].parentID;
+                tmpPostObject.Author = localSetOfPosts[k].Author;
+                tmpPostObject.Timestamp = localSetOfPosts[k].Timestamp;
+                tmpPostObject.Status = localSetOfPosts[k].Status;
+                tmpPostObject.Content = localSetOfPosts[k].Content;
             }
         }
 
-        tmpObject.memberID = member.memberID;
+        tmpObject.memberID = localSetOfMembers[i].memberID;
         tmpObject.appraisalID = tmpAppraisalObject.appraisalID;
         tmpObject.appraisalValue = tmpAppraisalObject.appraisalValue;
         tmpObject.parentID = tmpPostObject.parentID;
@@ -133,7 +140,7 @@ function sum(data) {
 
     for (var i = 0; i < data.length; i++) { /**For loop iteration through the dataset from the beginning to the end*/
         //for(var tmp in data[i]) {
-            console.log(i, data[i].appraisalValue);
+          //  console.log(i, data[i].appraisalValue);
            sum += data[i].appraisalValue; /**Add the current dataset element appraisal value to variable sum*/
     }
 
