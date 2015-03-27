@@ -77,7 +77,7 @@ function testGetThreadStats(){
 	Reporting.getThreadStats(jsonObject, "Num", consolePrintCallback);
 	Reporting.getThreadStats(jsonObject, "MemCount", consolePrintCallback);
 	Reporting.getThreadStats(jsonObject, "MaxDepth", consolePrintCallback);	
-	Reporting.getThreadStats(jsonObject, "AvgDepth", consolePrintCallback);
+	//Reporting.getThreadStats(jsonObject, "AvgDepth", consolePrintCallback);
 	
 }
 
