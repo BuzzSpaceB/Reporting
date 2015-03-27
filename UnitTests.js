@@ -63,7 +63,15 @@ function testGetThreadAppraisal(){
 }
 
 function testGetThreadStats(){
-
+	
+    var threadList = [
+    {"ParentID":"0", "Author":"1", "TimeStamp":"2015.03.15", "Content":"This is the first post I am writing here. My name is Eric.", "Status":"visible"},
+    {"ParentID":"1", "Author":"2", "TimeStamp":"2015.03.17", "Content":"Hi! My name is Jonah.", "Status":"visible"},
+    {"ParentID":"1", "Author":"0", "TimeStamp":"2015.03.17", "Content":"My name is Sarah. I am studying Computer Science", "Status":"visible"},
+    {"ParentID":"2", "Author":"1", "TimeStamp":"2015.03.18", "Content":"I am also studying Computer Science.", "Status":"visible"},
+    {"ParentID":"3", "Author":"2", "TimeStamp":"2015.03.18", "Content":"I wrote something that caused my post to be made hidden.", "Status":"hidden"}
+	];
+	
 }
 
 function testImportThread(){
@@ -76,11 +84,18 @@ function testImportThreadAppraisal(){
 
 //Uncomment your function here to test it:
 
+<<<<<<< HEAD
 //testGetThreadStats();
 //testGetThreadAppraisal();
 
 //testExportThread();
 //testExportThreadAppraisal();
 
+=======
+//testExportThread();
+//testExportThreadAppraisal();
+//testGetThreadAppraisal();
+testGetThreadStats();
+>>>>>>> 73fa8945a41f6d86f23759eadebf7cbe13ab5518
 //testImportThread();
 //testImportThreadAppraisal();
