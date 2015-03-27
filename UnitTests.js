@@ -41,36 +41,43 @@ function testGetThreadAppraisal(){
         {"appraisalID": "6", "appraisalValue": "0"}];
 
     var setOfMembers = [
-        {"memberID": "1", appraisalID: "1","postID": "1" },
-        {"memberID": "2", "appraisalID": "2","postID": "2" },
-        {"memberID": "3", "appraisalID": "3","postID": "3" },
-        {"memberID": "4", "appraisalID": "4","postID": "4" },
-        {"memberID": "5", "appraisalID": "5","postID": "5" },
-        {"memberID": "6", "appraisalID": "6","postID": "6" }];
+        {"memberID": "1", "appraisalID": "1",postID: "1" },
+        {"memberID": "2", "appraisalID": "2",postID: "2" },
+        {"memberID": "3", "appraisalID": "3",postID: "3" },
+        {"memberID": "4", "appraisalID": "4",postID: "4" },
+        {"memberID": "5", "appraisalID": "5",postID: "5" },
+        {"memberID": "6", "appraisalID": "6",postID: "6" }];
 
 
     var post = JSON.stringify(setOfPosts);
     var appraisal = JSON.stringify(setOfAppraisals);
     var member = JSON.stringify(setOfMembers);
 
-    Reporting.getThreadAppraisal(post, member, appraisal, "All", consolePrintCallback);
-    Reporting.getThreadAppraisal(post, member, appraisal, "Sum", consolePrintCallback);
-    Reporting.getThreadAppraisal(post, member, appraisal, "Avg", consolePrintCallback);
-    Reporting.getThreadAppraisal(post, member, appraisal, "Max", consolePrintCallback);
-    Reporting.getThreadAppraisal(post, member, appraisal, "Min", consolePrintCallback);
-    Reporting.getThreadAppraisal(post, member, appraisal, "Num", consolePrintCallback);
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "All"));
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Sum"));
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Avg"));
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Max"));
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Min"));
+    consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Num"));
 
 }
 
 function testGetThreadStats(){
-
-    var threadList = [
+	
+    var postList = [
     {"ParentID":"0", "Author":"1", "TimeStamp":"2015.03.15", "Content":"This is the first post I am writing here. My name is Eric.", "Status":"visible"},
     {"ParentID":"1", "Author":"2", "TimeStamp":"2015.03.17", "Content":"Hi! My name is Jonah.", "Status":"visible"},
     {"ParentID":"1", "Author":"0", "TimeStamp":"2015.03.17", "Content":"My name is Sarah. I am studying Computer Science", "Status":"visible"},
     {"ParentID":"2", "Author":"1", "TimeStamp":"2015.03.18", "Content":"I am also studying Computer Science.", "Status":"visible"},
     {"ParentID":"3", "Author":"2", "TimeStamp":"2015.03.18", "Content":"I wrote something that caused my post to be made hidden.", "Status":"hidden"}
-	];
+	];	
+	
+	var jsonObject = JSON.stringify(postList);
+	   
+	Reporting.getThreadStats(jsonObject, "Num", consolePrintCallback);
+	Reporting.getThreadStats(jsonObject, "MemCount", consolePrintCallback);
+	Reporting.getThreadStats(jsonObject, "MaxDepth", consolePrintCallback);	
+	Reporting.getThreadStats(jsonObject, "AvgDepth", consolePrintCallback);
 	
 }
 
@@ -84,7 +91,8 @@ function testImportThreadAppraisal(){
 
 //Uncomment your function here to test it:
 
-//testGetThreadStats();
+
+testGetThreadStats();
 //testGetThreadAppraisal();
 
 //testExportThread();

@@ -2,7 +2,7 @@
  * Carla de Beer
  * 95151835
  * COS 301: Reporting B: getThreadStats
- * 21.03.2015
+ * 27.03.2015
  */
 
 /**
@@ -21,6 +21,7 @@ module.exports = function(posts, action, callback)
     var JSONtoArray = []; // 1D array to store the number of JSON objects
 	var array = []; // 1D array to store all the details of the JSON object
     var arrayParentID = []; // 1D array to store the parent IDs
+    var arrayAuthorID = []; // 1D array to store the author IDs
 
     // Parse the JSON object first
     var parsed = JSON.parse(posts);
@@ -52,7 +53,6 @@ module.exports = function(posts, action, callback)
     }
     else if (action === "MemCount"){
 
-        var arrayAuthorID = []; // 1D array to store authorID array
         var arrayAuthorIDNoDuplicates = []; // 1D array to store member array without duplicates
 
         // Loop through array and get every 5th element, starting from index = 1
@@ -72,9 +72,7 @@ module.exports = function(posts, action, callback)
     }
     else if(action === "AvgDepth"){
 
-
         callback(getAveDepth(array, arrayParentID, arrayAuthorID));
-
     }
 };
 
@@ -120,7 +118,7 @@ function eliminateDuplicates(arr) {
  * @param arrayParentIDs
  * @returns {Integer value associated with the most frequent element in the array}
  */
-function getMaxDepth(array,pID ){
+function getMaxDepth(array, pID){
 
     // Loop through the array to get each 5th element, i.e. the parentID
     for (var i = 0; i < array.length; i+=5){
@@ -130,6 +128,7 @@ function getMaxDepth(array,pID ){
     // Sorting the array first so that the first item can be accessed as the most frequent
     pID.sort();
 
+    // Count the number of occurrences in the array pID
     var obj = {};
     for (var i = 0, j = pID.length; i < j; ++i) {
         obj[pID[i]] = (obj[pID[i]] || 0) + 1;
@@ -137,4 +136,36 @@ function getMaxDepth(array,pID ){
 
     // Return the count value of the first item (= most frequent) in the object
     return obj[0]; // not entirely sure about this ...
+}
+
+/**
+ * Helper function that gets the average depth of a post.
+ * @param array
+ * @param pID
+ * @param aID
+ * @returns {Integer value associated with the average depth of a post}
+ */
+function getAveDepth(array, pID, aID) {
+
+    // Create parentID array
+    // Loop through main array and get every 5th element, starting from index = 0
+    for (var i = 0; i < array.length; i+=5){
+        pID.push(array[i]);
+    }
+
+    // Create authorID array
+    // Loop through main array and get every 5th element, starting from index = 1
+    for (var i = 1; i < array.length; i+=5){
+        aID.push(array[i]);
+    }
+
+    var arrayAuthorIDNoDuplicates = [];
+
+    // Remove duplicates from authorID array
+    arrayAuthorIDNoDuplicates = eliminateDuplicates(aID);
+
+    var numParent = pID.length;
+    var numAuthor = arrayAuthorIDNoDuplicates.length;
+
+    return numParent / numAuthor;
 }
