@@ -95,7 +95,7 @@ function testImportThreadAppraisal(){
 
 
 //testGetThreadStats();
-testGetThreadAppraisal();
+//testGetThreadAppraisal();
 
 //testExportThread();
 //testExportThreadAppraisal();
