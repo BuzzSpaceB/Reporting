@@ -17,62 +17,54 @@ var getThreadAppraisal;
 
 module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeyword, callback) {
 
-    var localSetOfPosts = JSON.parse(setOfPosts); //local copy of the set of posts
-    var localSetOfMembers = JSON.parse(setOfMembers); //local copy of the set of members
+    var localSetOfPosts = JSON.parse(setOfPosts);           //local copy of the set of posts
+    var localSetOfMembers = JSON.parse(setOfMembers);       //local copy of the set of members
     var localSetOfAppraisals = JSON.parse(setOfAppraisals); //local copy of the set of appraisals
-    var localActionKeyword = actionKeyword; //local copy of the set of action keyword
-    //callback(localSetOfPosts);
-    var dataSet = []; //Array containing objects created using the  member-appraisal-post combination.
-    var tmpObject = {};      //Object used to insert the  member-appraisal-post combination into the data set.
-    var tmpAppraisalObject = {}; //Object used to get appraisal value for each member
-    var tmpPostObject = {};  //Object used to get post value for each member
+    var localActionKeyword = actionKeyword;                 //local copy of the set of action keyword
+    var dataSet = [];                                       //Array containing objects created using the  member-appraisal-post combination.
+    var tmpObject = {};                                     //Object used to insert the  member-appraisal-post combination into the data set.
+    var tmpAppraisalObject = {};                            //Object used to get appraisal value for each member
+    var tmpPostObject = {};                                 //Object used to get post value for each member
 
     /**
      * loop to create data set containing entry for each valid member-appraisal-post combination
-     */
+    */
+    for (var i = 0; i < localSetOfMembers.length; i++) {
 
-   // for(var member in localSetOfMembers) {
-        //callback(member.appraisalID);
-       // for (var appraisal in localSetOfAppraisals) {
-    for(var i = 0; i < localSetOfMembers.length; i++)
-    {
-        for(var j = 0; j < localSetOfAppraisals.length; j++)
-        {
-            if (localSetOfAppraisals[j].appraisalID != localSetOfMembers[i].appraisalID) {
-            } else {
+        for (var j = 0; j < localSetOfAppraisals.length; j++) {
+
+            if (localSetOfAppraisals[j].appraisalID == localSetOfMembers[i].appraisalID) {
+
                 tmpAppraisalObject.appraisalID = localSetOfAppraisals[j].appraisalID;
                 tmpAppraisalObject.appraisalValue = localSetOfAppraisals[j].appraisalValue;
+                break;
             }
         }
 
-        //for (var post in localSetOfPosts) {
-        for(var k = 0; k < localSetOfPosts.length; k++){
-            if (localSetOfMembers[i].postID != localSetOfPosts[k].postID) {
-            } else {
-                tmpPostObject.parentID = localSetOfPosts[k].parentID;
-                tmpPostObject.Author = localSetOfPosts[k].Author;
-                tmpPostObject.Timestamp = localSetOfPosts[k].Timestamp;
-                tmpPostObject.Status = localSetOfPosts[k].Status;
-                tmpPostObject.Content = localSetOfPosts[k].Content;
+        for (var k = 0; k < localSetOfPosts.length; k++) {
+            if (localSetOfMembers[i].postID == localSetOfPosts[k].postID) {
+
+                buildTempPostObject(tmpPostObject,localSetOfMembers[k]);
+                break;
             }
         }
 
-        tmpObject.memberID = localSetOfMembers[i].memberID;
-        tmpObject.appraisalID = tmpAppraisalObject.appraisalID;
-        tmpObject.appraisalValue = tmpAppraisalObject.appraisalValue;
-        tmpObject.parentID = tmpPostObject.parentID;
-        tmpObject.Author = tmpPostObject.Author;
-        tmpObject.Timestamp = tmpPostObject.Timestamp;
-        tmpObject.Status = tmpPostObject.Status;
-        tmpObject.Content = tmpPostObject.Content;
+        buildTmpObject(tmpObject,localSetOfMembers[i].memberID,tmpPostObject, tmpAppraisalObject);
 
         dataSet.push(tmpObject);
+        tmpObject = {};
     }
 
     /**
      * 
      * Switch statement result returned upon each of the action keywords: ALL, SUM, AVG, MAX, MIN and NUM
      */
+    switchKeyword(localActionKeyword, dataSet);
+
+};
+
+
+function switchKeyword(localActionKeyword, dataSet){
     switch(localActionKeyword) {
         case "All":
             if (typeof callback === "function") {
@@ -87,7 +79,7 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
                 callback(sum(dataSet)); /**Calls the helper function sum(dataset)*/
             }
             else
-                 return sum(dataSet);
+                return sum(dataSet);
             break;
 
         case "Avg":
@@ -127,6 +119,26 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
     }
 };
 
+
+function buildTempPostObject(tmpPostObject,localSetOfPosts){
+    tmpPostObject.parentID = localSetOfPosts.parentID;
+    tmpPostObject.Author = localSetOfPosts.Author;
+    tmpPostObject.Timestamp = localSetOfPosts.Timestamp;
+    tmpPostObject.Status = localSetOfPosts.Status;
+    tmpPostObject.Content = localSetOfPosts.Content;
+};
+
+function buildTmpObject(tmpObject,member,tmpPostObject,tmpAppraisalObject){
+    tmpObject.memberID = member;
+    tmpObject.appraisalID = tmpAppraisalObject.appraisalID;
+    tmpObject.appraisalValue = tmpAppraisalObject.appraisalValue;
+    tmpObject.parentID = tmpPostObject.parentID;
+    tmpObject.Author = tmpPostObject.Author;
+    tmpObject.Timestamp = tmpPostObject.Timestamp;
+    tmpObject.Status = tmpPostObject.Status;
+    tmpObject.Content = tmpPostObject.Content;
+
+};
 /**
  * Helper Function For Case: "Sum"
  * The sum of all appraisal values for the entries in the data set that was created.
@@ -139,8 +151,7 @@ function sum(data) {
     var sum = 0; /**Variable that stores the sum value.*/
 
     for (var i = 0; i < data.length; i++) { /**For loop iteration through the dataset from the beginning to the end*/
-        //for(var tmp in data[i]) {
-          //  console.log(i, data[i].appraisalValue);
+
            sum += data[i].appraisalValue; /**Add the current dataset element appraisal value to variable sum*/
     }
 
@@ -196,7 +207,7 @@ function maximum(data) {
  */
 function minimum(data){
 
-    var min = 0; /**Variable that stores the minimum value.*/
+    var min = 1000000; /**Variable that stores the minimum value.*/
 
     for (var i = 0; i < data.length; i++) {/**For loop iteration through the dataset from the beginning to the end*/
 

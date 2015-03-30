@@ -5,7 +5,7 @@
 var Reporting = require('./Reporting.js');
 
 var consolePrintCallback = function(data) {
-    console.log('got data: '+data);
+    console.log('got data: ' + data);
 };
 
 function testExportThread(){
@@ -33,12 +33,12 @@ function testGetThreadAppraisal(){
         {"postID": "6", "parentID": "11", "Author": "Dummy6", "Timestamp": "1426872319927", "Status":"ON", "Content":"Baa Baa Black Sheep, Have you any wool?"}];
 
     var setOfAppraisals = [
-        {"appraisalID": "1", "appraisalValue": "1"},
-        {"appraisalID": "2", "appraisalValue": "4"},
-        {"appraisalID": "3", "appraisalValue": "6"},
-        {"appraisalID": "4", "appraisalValue": "9"},
-        {"appraisalID": "5", "appraisalValue": "10"},
-        {"appraisalID": "6", "appraisalValue": "0"}];
+        {"appraisalID": "1", "appraisalValue": 1},
+        {"appraisalID": "2", "appraisalValue": 4},
+        {"appraisalID": "3", "appraisalValue": 6},
+        {"appraisalID": "4", "appraisalValue": 9},
+        {"appraisalID": "5", "appraisalValue": 10},
+        {"appraisalID": "6", "appraisalValue": 9}];
 
     var setOfMembers = [
         {"memberID": "1", "appraisalID": "1",postID: "1" },
@@ -94,8 +94,8 @@ function testImportThreadAppraisal(){
 //Uncomment your function here to test it:
 
 
-testGetThreadStats();
-//testGetThreadAppraisal();
+//testGetThreadStats();
+testGetThreadAppraisal();
 
 //testExportThread();
 //testExportThreadAppraisal();
