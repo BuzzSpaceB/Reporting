@@ -1,9 +1,9 @@
 /**
- * Created by Ephiphania Munava 10624610 on 3/19/2015.
+ * Created by Ephiphania Munava 10624610 on 19/03/2015.
  */
 
 /**
- * Receives parameters which are 3 json object and 1 actionKeyword. Depending on the actionKeyword performs
+ * Function that eceives parameters which are 3 json object and 1 actionKeyword. Depending on the actionKeyword performs
  * certain calculations and return results
  *
  * @param  setOfPosts -     Type JSONObject a set of posts returned by the Threads.queryThread function.
@@ -14,7 +14,6 @@
  * @returns depending on the actionKeyword returns jsonObject, integer or double value.
  *
  * */
-
 module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeyword, callback) {
 
     var localSetOfPosts = JSON.parse(setOfPosts);           /**local copy of the set of posts*/
@@ -25,7 +24,6 @@ module.exports = function(setOfPosts, setOfMembers, setOfAppraisals, actionKeywo
     var tmpObject = {};                                     /**Object used to insert the  member-appraisal-post combination into the data set.*/
     var tmpAppraisalObject = {};                            /**Object used to get appraisal value for each member*/
     var tmpPostObject = {};                                 /**Object used to get post value for each member*/
-
     /**
      * loop to create data set containing entry for each valid member-appraisal-post combination
     */

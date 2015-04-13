@@ -1,4 +1,3 @@
-
 /** Function to import a thread or subset of threads that was previously backed up
  *
  * @param threadObject the thread object to be exported
@@ -6,7 +5,6 @@
  * @param fileName name of file to be imported
  *
  * */
-
 module.exports = function(threadObject,directory,fileName){
     var fs = require('fs');
     var path = require('path');

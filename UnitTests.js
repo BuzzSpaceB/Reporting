@@ -1,6 +1,6 @@
-/**
- * Created by User on 3/24/2015.
- */
+// ===================================================================================================
+// Manual unit testing is done below by calling each of the function calls at the end of this section
+// ===================================================================================================
 
 var Reporting = require('./Reporting.js');
 
@@ -10,21 +10,33 @@ var consolePrintCallback = function(data) {
     valuesRecieved = data;
 };
 
-function testExportThread(){
-    Reporting.exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"C:/Users/Diaman/Desktop/ThreadBackup","backup1.txt");
+/**
+ * Manual testing for each of the functions for the project: function testGetThreadStats
+ */
+function testGetThreadStats(){
+
+    var postList = [
+        {"ParentID":"0", "Author":"1", "TimeStamp":"2015.03.15", "Content":"This is the first post I am writing here. My name is Eric.", "Status":"visible"},
+        {"ParentID":"1", "Author":"2", "TimeStamp":"2015.03.17", "Content":"Hi! My name is Jonah.", "Status":"visible"},
+        {"ParentID":"2", "Author":"3", "TimeStamp":"2015.03.17", "Content":"My name is Sarah. I am studying Computer Science", "Status":"visible"},
+        {"ParentID":"2", "Author":"1", "TimeStamp":"2015.03.18", "Content":"I am also studying Computer Science.", "Status":"visible"},
+        {"ParentID":"2", "Author":"2", "TimeStamp":"2015.03.18", "Content":"I wrote something that caused my post to be made hidden.", "Status":"hidden"},
+        {"ParentID":"2", "Author":"0", "TimeStamp":"2015.03.19", "Content":"I am learning JavaScript.", "Status":"visible"},
+        {"ParentID":"2", "Author":"0", "TimeStamp":"2015.03.19", "Content":"I am learning Java.", "Status":"visible"}
+    ];
+
+    var jsonObject = JSON.stringify(postList);
+
+    Reporting.getThreadStats(jsonObject, "Num", consolePrintCallback);
+    Reporting.getThreadStats(jsonObject, "MemCount", consolePrintCallback);
+    Reporting.getThreadStats(jsonObject, "MaxDepth", consolePrintCallback);
+    Reporting.getThreadStats(jsonObject, "AvgDepth", consolePrintCallback);
 
 }
 
-function testExportThreadAppraisal(){
-    var items = [
-        { "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Content":"Bla Bla", "Status":"On", "memeberID":"1", "appraisalID":"1", "appraisalValue":"1" },
-        { "parentID": "2", "Author": "Dummy2", "Timestamp": "1426872319924", "Content":"Bla Bla ble", "Status":"Off", "memeberID":"2", "appraisalID":"2", "appraisalValue":"2" }];
-
-    /** Convert object to JSON*/
-    var jsonObject = JSON.stringify(items);
-    Reporting.exportThreadAppraisal(jsonObject,"C:/Users/Diaman/Desktop/Appraisal","appraisal.csv");
-}
-
+/**
+ * Manual testing for each of the functions for the project: function testGetThreadAppraisal
+ */
 function testGetThreadAppraisal(){
     var setOfPosts = [
         {"postID": "1", "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Status":"Off", "Content":"Baa"},
@@ -61,61 +73,67 @@ function testGetThreadAppraisal(){
     consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Max"));
     consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Min"));
     consolePrintCallback(Reporting.getThreadAppraisal(post, member, appraisal, "Num"));
-
 }
 
-function testGetThreadStats(){
-	
-    var postList = [
-    {"ParentID":"0", "Author":"1", "TimeStamp":"2015.03.15", "Content":"This is the first post I am writing here. My name is Eric.", "Status":"visible"},
-    {"ParentID":"1", "Author":"2", "TimeStamp":"2015.03.17", "Content":"Hi! My name is Jonah.", "Status":"visible"},
-    {"ParentID":"2", "Author":"3", "TimeStamp":"2015.03.17", "Content":"My name is Sarah. I am studying Computer Science", "Status":"visible"},
-    {"ParentID":"2", "Author":"1", "TimeStamp":"2015.03.18", "Content":"I am also studying Computer Science.", "Status":"visible"},
-    {"ParentID":"2", "Author":"2", "TimeStamp":"2015.03.18", "Content":"I wrote something that caused my post to be made hidden.", "Status":"hidden"},
-	{"ParentID":"2", "Author":"0", "TimeStamp":"2015.03.19", "Content":"I am learning JavaScript.", "Status":"visible"},
-	{"ParentID":"2", "Author":"0", "TimeStamp":"2015.03.19", "Content":"I am learning Java.", "Status":"visible"}
-	];
-	
-	var jsonObject = JSON.stringify(postList);
-	   
-	Reporting.getThreadStats(jsonObject, "Num", consolePrintCallback);
-	Reporting.getThreadStats(jsonObject, "MemCount", consolePrintCallback);
-	Reporting.getThreadStats(jsonObject, "MaxDepth", consolePrintCallback);	
-	Reporting.getThreadStats(jsonObject, "AvgDepth", consolePrintCallback);
-	
+/**
+ * Manual testing for each of the functions for the project: function testExportThreadAppraisal
+ */
+function testExportThreadAppraisal(){
+    var items = [
+        { "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Content":"Bla Bla", "Status":"On", "memeberID":"1", "appraisalID":"1", "appraisalValue":"1" },
+        { "parentID": "2", "Author": "Dummy2", "Timestamp": "1426872319924", "Content":"Bla Bla ble", "Status":"Off", "memeberID":"2", "appraisalID":"2", "appraisalValue":"2" }];
+
+    /** Convert object to JSON*/
+    var jsonObject = JSON.stringify(items);
+    Reporting.exportThreadAppraisal(jsonObject,"C:/Users/Diaman/Desktop/Appraisal","appraisal.csv");
 }
 
+/**
+ * Manual testing for each of the functions for the project: function testImportThread
+ */
 function testImportThread(){
     Reporting.importThread("C:/Users/Diaman/Desktop/ThreadBackup","backup1.txt",consolePrintCallback);
 }
 
+/**
+ * Manual testing for each of the functions for the project: function testExportThread
+ */
+function testExportThread(){
+    Reporting.exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"C:/Users/Diaman/Desktop/ThreadBackup","backup1.txt");
+}
+
+/**
+ * Manual testing for each of the functions for the project: function testImportThreadAppraisal
+ */
 function testImportThreadAppraisal(){
     Reporting.importThreadAppraisal("C:/Users/Diaman/Desktop/Appraisal","appraisal.csv");
 }
 
-//Uncomment your function here to test it:
+// Uncomment your function here to test it:
 
-//testGetThreadStats();
-//testGetThreadAppraisal();
+// testGetThreadStats();
+// testGetThreadAppraisal();
 
-//testExportThread();
-//testExportThreadAppraisal();
+// testExportThread();
+// testExportThreadAppraisal();
 
-//testImportThread();
-//testImportThreadAppraisal();
+// testImportThread();
+// testImportThreadAppraisal();
 
 
-/** 
- *==============================HERE=============================================================
- *Automatic unit testing is done below by sending results to a reqeust on port 3000 of localhost */
+ // ===============================================================================================
+ // Automated unit testing is done below by sending results to a request on port 3000 of localhost
+ // ===============================================================================================
 
-//Using the express framework
+// Using the express framework
 var express = require('express');
 
-//Creating an express object
+// Creating an express object
 var app = express();
 
-//Send links to the request to navigate to different functions
+/**
+ * JQuery function call to send links to the request to navigate to different functions
+ */
 app.get('/', function (req, res) {
   res.end('<a href = "/testGetThreadStats">1-Test the getThreadStats function</a><br/><a href = "/testGetThreadAppraisal">2-Test the getThreadAppraisal function</a><br/>'+
   '<a href = "/testExportThreadAppraisal">3-Test the exportThreadAppraisal function</a><br/><a href = "/testImportThreadAppraisal">4-Test the importThreadAppraisal function</a>' +
@@ -123,7 +141,9 @@ app.get('/', function (req, res) {
 });
 
 
-/** testGetThreadStats*/
+/**
+ * JQuery function call to automate the testing of the testGetThreadStats functionality
+ */
 app.get('/testGetThreadStats', function (req, res) {
 	var postList = [
     {"ParentID":"0", "Author":"1", "TimeStamp":"2015.03.15", "Content":"This is the first post I am writing here. My name is Eric.", "Status":"visible"},
@@ -156,7 +176,10 @@ app.get('/testGetThreadStats', function (req, res) {
   '<h3>The value that was calculated using the avgDepth keyword</h3>'+ avgDepth );
 });
 
-/** testGetThreadAppraisal*/
+
+/**
+ * JQuery function call to automate the testing of the testGetThreadAppraisal functionality
+ */
 app.get('/testGetThreadAppraisal', function (req, res) {
 	var setOfPosts = [
         {"postID": "1", "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Status":"Off", "Content":"Baa"},
@@ -217,7 +240,9 @@ app.get('/testGetThreadAppraisal', function (req, res) {
   '<h3>The value that was calculated using the Num keyword</h3>'+ num)
 });
 
-/** testExportThreadAppraisal*/
+/**
+ * JQuery function call to automate the testing of the testExportThreadAppraisal functionality
+ */
 app.get('/testExportThreadAppraisal', function (req, res) {
 	var items = [
         { "parentID": "1", "Author": "Dummy1", "Timestamp": "1426872319922", "Content":"Bla Bla", "Status":"On", "memeberID":"1", "appraisalID":"1", "appraisalValue":"1" },
@@ -231,13 +256,18 @@ app.get('/testExportThreadAppraisal', function (req, res) {
   '<p>The file was saved to \'C:/Games/appraisal.csv\'</p>');
 });
 
-/** testImportThreadAppraisal*/
+/**
+ * JQuery function call to automate the testing of the testExportThreadAppraisal functionality
+ */
+
 app.get('/testImportThreadAppraisal', function (req, res) {
 	Reporting.importThreadAppraisal("C:/Games","appraisal.csv")
   res.end('<a href = "/">Go to main menu</a>')
 });
 
-/** testExportThread*/
+/**
+ * JQuery function call to automate the testing of the testExportThread functionality
+ */
 app.get('/testExportThread', function (req, res) {
 	Reporting.exportThread('{ "posts" : [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}]}',"C:/Games","backup1.txt");
 	var posts =  [{"ParentID":"1","Author":"1","TimeStamp":"xxxxx","Content":"adqwfqfgqfqwfqdasdasqwqwd","Status":"open","Level":"1"},{"ParentID":"3","Author":"2","TimeStamp":"aaaaa","Content":"ad","Status":"hidden","Level":"2"},{"ParentID":"2","Author":"3","TimeStamp":"bbbbb","Content":"adqwfqf","Status":"closed","Level":"3"}];
@@ -247,7 +277,9 @@ app.get('/testExportThread', function (req, res) {
   '<p>The file was saved to \'C:/Games/backup1.txt\'</p>')
 });
 
-/** testImportThread*/
+/**
+ * JQuery function call to automate the testing of the testExportThread functionality
+ */
 app.get('/testImportThread', function (req, res) {
 	Reporting.importThread("C:/Games","backup1.txt",consolePrintCallback);
 	var theVals = valuesRecieved;
@@ -255,5 +287,5 @@ app.get('/testImportThread', function (req, res) {
   '<h3>The object created from the file \'C:/Games/backup1.txt\' </h3>' + theVals);
 });
 
-/** Start listening for requests on port 3000*/
+//Start listening for requests on port 3000
 app.listen(3000);

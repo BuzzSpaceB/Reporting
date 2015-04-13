@@ -1,4 +1,4 @@
-/**Edited by Mkhabela Phethile 3/19/2015**/
+/**Edited by Mkhabela Phethile 19/03/2015**/
 /**the importThreadAppraisal Function gets a csv file as input from the exportThreadAppraisal function, the function then checks that the member and the appraisal are valid, calls assignAppraisalToPost for each field if valid and throws an exception if invalid**/
 /**This function requires you to run in on a server like Apache, I used usbwebserver**/
 module.exports = function(directory,fileName)//function gets the name of the file as input same file from exportThreadAppraisal(),this is how i achieved the functionality <a href="#" onclick="importThreadAppraisal('yes.csv')">test</a>

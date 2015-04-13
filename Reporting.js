@@ -1,5 +1,4 @@
 
-
 module.exports.getThreadStats = require('./ReportingB/getThreadStats.js');
 module.exports.getThreadAppraisal = require('./ReportingB/getThreadAppraisal.js');
 module.exports.exportThreadAppraisal = require('./ReportingB/exportThreadAppraisal.js');
